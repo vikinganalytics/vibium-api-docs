@@ -6,7 +6,7 @@ OpenAPI documentation is available at `https://api.beta.multiviz.com/docs`
 
 In this example we will analyze behaviour of a sensor that submits waveform data.
 
-1. Create a source:
+1. Create a source.
 
 ```
 curl -X 'POST' \
@@ -20,7 +20,7 @@ curl -X 'POST' \
     "location": "REYK 3",
     "assetName": "FAN 3 (REYK 3)",
     "sensorName": "NDE H MOTOR 3",
-    "measurementName": "1k Acc"
+    "measurementName": "1k Acc X"
   },
   "channels": [
     "acc_x"
@@ -37,7 +37,7 @@ curl -X 'GET' \
   -H 'X-Vibium-Api-Key: <your_api_token>'
 ```
 
-2. Upload measurement for the source
+2. Upload measurement for the source.
 
 ```
 curl -X 'POST' \
@@ -65,9 +65,9 @@ curl -X 'POST' \
 
 Plese note that under `data` field you upload measurements for the corresponding channel name `acc_x` that you specified in step 1. The duration is specified in seconds. The timestamp is specified in milliseconds from epoch.
 
-Repead step 2 for every measurements that you want to submit for the source. We need at least 20 to run the analysis.
+Repeat step 2 for every measurements that you want to submit for the source. We need at least 20 to run the analysis.
 
-3. analyze source behaviour
+3. Analyze source behaviour.
 
 ```
 curl -X 'POST' \
@@ -111,6 +111,8 @@ curl -X 'GET' \
 
 Sometimes analysis might fail for some reason. You will see it in the result in this case. Please contact us in case analysis keeps failing for your source.
 
-4. Upload new measurements
+4. Upload new measurements.
 
 When you need to upload new measurements for the source simply repeat steps 2 and 3.
+
+NOTE: For a triaxial sensor, each axis is to be treated as a separate source, and steps 1 to 3 directly apply.
